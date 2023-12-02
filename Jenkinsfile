@@ -9,5 +9,12 @@ pipeline {
             }
         }
     }
+        stage('Test image') {
+            steps {
+                script{
+                    sh 'docker run -d --name python-app kelvinskell/python-http-server && sleep 10 && docker stop python-app'
+                }
+            }
+        }    
 }
 }
