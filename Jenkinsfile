@@ -13,7 +13,6 @@ pipeline {
             steps {
                 script{
                     sh 'docker run -d --name python-app kelvinskell/python-http-server && sleep 10 && docker stop python-app'
-                    sh 'docker rm python-app'
                 }
             }
         }
@@ -27,4 +26,14 @@ pipeline {
             }
         }    
 }
+        post {
+        always {
+            // Always executed
+                sh 'docker rm python-app'
+        }
+        success {
+            // on sucessful execution
+            sh 'docker logout'   
+        }
+    }
 }
