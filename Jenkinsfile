@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script{
                     sh 'docker run -d --name python-app kelvinskell/python-http-server && sleep 10 && docker stop python-app'
+                    sh 'docker rm python-app'
                 }
             }
         }
