@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script{
                     withCredentials([string(credentialsId: 'DockerHubPass', variable: 'DockerHubpass')]) {
-                    sh 'docker login -u kelvinskell --password "${DockeHubPass}"' }
+                    sh 'docker login -u kelvinskell --password ${DockeHubpass}' }
                     sh 'docker push kelvinskell/python-http-server'
                 }
             }
