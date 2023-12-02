@@ -7,7 +7,7 @@ pipeline {
     stages{
         stage('Build Docker Image') {
             steps {
-                docker build . -t kelvinskell/python-http-server
+                docker build -t kelvinskell/python-http-server .
             }
         }
     }
