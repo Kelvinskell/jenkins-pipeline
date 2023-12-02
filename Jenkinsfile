@@ -15,6 +15,16 @@ pipeline {
                     sh 'docker run -d --name python-app kelvinskell/python-http-server && sleep 10 && docker stop python-app'
                 }
             }
+        }
+        stage('Push image to Dockerhub') {
+            steps {
+                script{
+                    withCredentials([string(credentialsId: 'DockerHubPass', variable: 'DockerHubpass')]) {
+                    sh 'docker login -u kelvinskell -p ${DockeHubPass}' 
+}
+                    sh 'docker push kelvinskell/python-http-server'
+                }
+            }
         }    
 }
 }
