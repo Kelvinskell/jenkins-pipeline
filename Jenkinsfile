@@ -2,13 +2,17 @@ pipeline {
     agent any
     
     stages{
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarScanner') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }
+        stage('SonarQube analysis') {
+      steps {
+        script {
+          // requires SonarQube Scanner 2.8+
+          scannerHome = tool 'SonarScanner'
         }
+        withSonarQubeEnv('SonarQube Server') {
+          sh "${scannerHome}/bin/sonar-scanner"
+        }
+      }
+    }
 
         stage('Build Docker Image') {
             steps {
