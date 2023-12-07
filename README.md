@@ -14,5 +14,3 @@ There are four stages of the pipeline as per the Jenkinsfile.
 ## Usage
 This project is intended for didactic purposes only.
 The aim is to demonstarate to new and intermediate DevOps professionals how to build a standard continuos integration pipeline.
-
-To see instructions on how to replicate this on your own, checkout this [Blog Post]().
