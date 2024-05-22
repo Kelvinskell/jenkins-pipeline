@@ -2,17 +2,17 @@ pipeline {
     agent any
     
     stages{
-        stage('SonarQube Analysis') {
-      steps {
-        script {
+     //   stage('SonarQube Analysis') {
+     // steps {
+      //  script {
           // requires SonarQube Scanner 2.8+
-          scannerHome = tool 'SonarScanner'
-        }
-        withSonarQubeEnv('SonarQube Server') {
-          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=python-app"
-        }
-      }
-    }
+      //    scannerHome = tool 'SonarScanner'
+       // }
+       // withSonarQubeEnv('SonarQube Server') {
+        //  sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=python-app"
+       // }
+     // }
+   // }
 
         stage('Build Docker Image') {
             steps {
